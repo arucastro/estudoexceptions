@@ -51,11 +51,13 @@ public class Account {
 	}
 	
 	public void withdraw(Double amount) throws LimitException {
+		//este método realiza um saque e lança um erro caso 
+		//os valores não respeitem as regras de negócio
 		if (amount > this.getBalance()) {
 			throw new LimitException("Not enough balance");
 		}
 		if (amount > this.getWithdrawLimit()) {
-			throw new LimitException("Amout exceeds withdraw limit");
+			throw new LimitException("Amount exceeds withdraw limit");
 		}
 		
 		this.balance -= amount;
